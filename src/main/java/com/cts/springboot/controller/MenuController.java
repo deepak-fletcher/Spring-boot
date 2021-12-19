@@ -47,7 +47,7 @@ public class MenuController {
     }
 
 
-    @GetMapping("{category}")
+    @GetMapping("/item/{category}")
     public ResponseEntity<Menu> getMenuByCategory(@PathVariable("category") String category){
         return new ResponseEntity<Menu>(menuService.getMenuByCategory(category), HttpStatus.OK);
     }

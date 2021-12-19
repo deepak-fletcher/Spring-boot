@@ -25,4 +25,29 @@ public class Menu {
     private double price;
     @Column(name="description")
     private String description;
+
+    public int getId()
+    {
+        return id;
+    }
+
+    public String getTitle()
+    {
+        return title;
+    }
+
+    public String getCategory()
+    {
+        return category;
+    }
+
+    public Double getPrice()
+    {
+        return price;
+    }
+
+    public String getDescription()
+    {
+        return description;
+    }
 }
