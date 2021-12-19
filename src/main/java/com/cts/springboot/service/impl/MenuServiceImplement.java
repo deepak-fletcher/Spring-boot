@@ -46,8 +46,8 @@ public class MenuServiceImplement implements MenuService {
         }
     }
     @Override
-    public Menu getMenuByCategory(String category) {
-        // Optional<Menu> menu = menuRepository.findAll(category);
+    public List<Menu> getMenuByCategory(String category) {
+        // List<Menu> menu = menuRepository.findByCategory(category);
         // if(menu.isPresent())
         // {
         //     return menu.get();
@@ -57,6 +57,36 @@ public class MenuServiceImplement implements MenuService {
         // }
         return null;
     }
+    
+
+
+    @Override
+    public void deleteMenu(int id) {
+        Optional<Menu> menu = menuRepository.findById(id);
+        if(menu.isPresent())
+        {
+            menuRepository.deleteById(id);
+        }
+        else{
+            throw new NotFoundException("Menu","Id",id);
+        }
+        
+    }
+
+
+    @Override
+    public Menu updateMenu(Menu menu, int id) {
+        Menu menuItem = menuRepository.findById(id).orElseThrow(()-> new NotFoundException("Menu","Id",id));
+        menuItem.setTitle(menu.getTitle());
+        menuItem.setCategory(menu.getCategory());
+        menuItem.setPrice(menu.getPrice());
+        menuItem.setDescription(menu.getDescription());
+        menuRepository.save(menuItem);
+        return menuItem;
+    }
+
+
+    
 
     
     

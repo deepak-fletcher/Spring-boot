@@ -7,9 +7,11 @@ import com.cts.springboot.service.MenuService;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -47,9 +49,27 @@ public class MenuController {
     }
 
 
-    @GetMapping("/item/{category}")
-    public ResponseEntity<Menu> getMenuByCategory(@PathVariable("category") String category){
-        return new ResponseEntity<Menu>(menuService.getMenuByCategory(category), HttpStatus.OK);
+    // @GetMapping("/item/{category}")
+    // public ResponseEntity<Menu> getMenuByCategory(@PathVariable("category") String category){
+    //     return new ResponseEntity<Menu>(menuService.getMenuByCategory(category), HttpStatus.OK);
+    // }
+
+
+
+    
+
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<String> deleteEmployee(@PathVariable("id") int id)
+    {
+        menuService.deleteMenu(id);
+        return new ResponseEntity<String>("Susseccfully deleted",HttpStatus.OK);
+    }
+
+    @PutMapping("{id}")
+    public ResponseEntity<Menu> updateMenu(@PathVariable("id") int id,@RequestBody Menu menu)
+    {
+        return new ResponseEntity<Menu>(menuService.updateMenu(menu, id), HttpStatus.OK);
     }
 
 

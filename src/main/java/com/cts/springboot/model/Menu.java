@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Data
-@Entity
+@Entity(name="food")
 @Table(name="food")
 public class Menu {
 
@@ -30,24 +30,44 @@ public class Menu {
     {
         return id;
     }
+    public void setId(int id)
+    {
+        this.id = id;
+    }
 
     public String getTitle()
     {
         return title;
+    }
+    public void setTitle(String title)
+    {
+        this.title = title;
     }
 
     public String getCategory()
     {
         return category;
     }
+    public void setCategory(String category)
+    {
+        this.category = category;
+    }
 
     public Double getPrice()
     {
         return price;
     }
+    public void setPrice(double price)
+    {
+        this.price = price;
+    }
 
     public String getDescription()
     {
         return description;
+    }
+    public void setDescription(String description)
+    {
+        this.description = description;
     }
 }

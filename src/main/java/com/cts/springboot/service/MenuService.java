@@ -8,5 +8,7 @@ public interface MenuService {
     Menu saveMenu(Menu menu);
     List<Menu> getAllMenu();
     Menu getMenuByID(int id);
-    Menu getMenuByCategory(String category);
+    List<Menu> getMenuByCategory(String category);
+    Menu updateMenu(Menu menu, int id);
+    void deleteMenu(int id);
 }
